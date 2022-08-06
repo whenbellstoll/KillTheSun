@@ -66,12 +66,18 @@ func _physics_process(_delta):
 	var is_on_platform = right_platform_detector.is_colliding() || left_platform_detector.is_colliding()
 	if _velocity.x >= 0:
 		_velocity = move_and_slide_with_snap(
-			_velocity, snap_vector, FLOOR_NORMAL_LEFT, not is_on_platform, 4, 0.9, false
+			_velocity, snap_vector, FLOOR_NORMAL_LEFT, not right_platform_detector.is_colliding(), 4, 0.9, false
 		)
+		if right_platform_detector.is_colliding():
+			_velocity.x = -150
+			sprite.flip_v = false
 	else:
 		_velocity = move_and_slide_with_snap(
-			_velocity, snap_vector, FLOOR_NORMAL_RIGHT, not is_on_platform, 4, 0.9, false
+			_velocity, snap_vector, FLOOR_NORMAL_RIGHT, not left_platform_detector.is_colliding(), 4, 0.9, false
 		)
+		if left_platform_detector.is_colliding():
+			_velocity.x = 150
+			sprite.flip_v = true
 
 	# We use the sprite's scale to store Robi’s look direction which allows us to shoot
 	# bullets forward.
