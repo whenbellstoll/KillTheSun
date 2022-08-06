@@ -1,9 +1,24 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Art/WhitePixel.png" type="Texture" id=2]
+[ext_resource path="res://PlatformCollider.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 340, 300 )
+
+[sub_resource type="GDScript" id=2]
+resource_name = "PlayerTracker"
+script/source = "extends Node2D
+
+
+onready var _player = get_node(\"../Player\")
+
+func _process(delta):
+	self.position = Vector2(0, _player.position.y)
+"
+
+[sub_resource type="AnimatedTexture" id=3]
 
 [node name="Node2D" type="Node2D"]
 
@@ -16,3 +31,27 @@ position = Vector2( 0.5, -0.5 )
 shape = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+
+[node name="PlayerTracker" type="Node2D" parent="."]
+script = SubResource( 2 )
+
+[node name="LeftMargin" type="Sprite" parent="PlayerTracker"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -426, 0 )
+scale = Vector2( 171.537, 604.775 )
+texture = ExtResource( 2 )
+normal_map = SubResource( 3 )
+
+[node name="StaticBody2D" parent="PlayerTracker/LeftMargin" instance=ExtResource( 3 )]
+visible = false
+scale = Vector2( 0.0497176, 0.049926 )
+
+[node name="RightMargin" type="Sprite" parent="PlayerTracker"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 426, 0 )
+scale = Vector2( 172, 600 )
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D" parent="PlayerTracker/RightMargin" instance=ExtResource( 3 )]
+visible = false
+scale = Vector2( 0.0497176, 0.0499259 )
