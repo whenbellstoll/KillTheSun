@@ -73,13 +73,11 @@ func _physics_process(_delta):
 		)
 	elif _velocity.x < 0:
 		if left_platform_detector.is_colliding():
-			print(_velocity.x)
 			_velocity.x = max(150, abs(_velocity.x))
 			sprite.flip_v = true
 		_velocity = move_and_slide_with_snap(
 			_velocity, snap_vector, FLOOR_NORMAL_RIGHT, not left_platform_detector.is_colliding(), 4, 0.9, false
 		)
-		print(_velocity.x)
 	else:
 		if right_platform_detector.is_colliding():
 			_velocity.x = min(-150, -abs(_velocity.x))
