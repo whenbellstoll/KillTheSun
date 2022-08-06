@@ -26,7 +26,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Project"
+config/name="Kill The Sun"
+config/description="He he kill the sun with a strong guy!"
 run/main_scene="res://Opening.tscn"
 config/icon="res://icon.png"
 
