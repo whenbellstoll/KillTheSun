@@ -10,7 +10,7 @@ onready var gravity = ProjectSettings.get("physics/2d/default_gravity")
 
 const FLOOR_NORMAL_LEFT = Vector2.LEFT;
 const FLOOR_NORMAL_RIGHT = Vector2.RIGHT;
-const MAX_HORIZONTAL_VELOCITY = 300;
+const MAX_HORIZONTAL_VELOCITY = 600;
 
 var _velocity = Vector2.ZERO
 
