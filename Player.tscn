@@ -1,10 +1,26 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Art/Player1.png" type="Texture" id=1]
 [ext_resource path="res://Art/Player2.png" type="Texture" id=2]
+[ext_resource path="res://Art/Boi.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 37, 20 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 256, 0 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Run"
@@ -22,12 +38,79 @@ tracks/0/keys = {
 "update": 1,
 "values": [ ExtResource( 1 ), ExtResource( 2 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SlapCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Slap"
+length = 0.66
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 256, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SlapCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 36.5, 32 )
 
 [node name="Player" type="KinematicBody2D"]
 
 [node name="SlapAnimation" type="Timer" parent="."]
 process_mode = 0
-wait_time = 0.4
+wait_time = 0.66
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -37,9 +120,17 @@ shape = SubResource( 1 )
 position = Vector2( -1, -6 )
 rotation = 4.71239
 scale = Vector2( 0.15, 0.15 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
+offset = Vector2( 256, 0 )
 
 [node name="Camera" type="Camera2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
 anims/Run = SubResource( 2 )
+anims/Slap = SubResource( 4 )
+
+[node name="SlapCollision" type="CollisionShape2D" parent="."]
+position = Vector2( 0.5, -47 )
+shape = SubResource( 5 )
+disabled = true
