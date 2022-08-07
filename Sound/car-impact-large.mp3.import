@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/car-impact-large.mp3-2c1c2e9695e1e20ce73e3b9d384bddde.mp3str"
+
+[deps]
+
+source_file="res://Sound/car-impact-large.mp3"
+dest_files=[ "res://.import/car-impact-large.mp3-2c1c2e9695e1e20ce73e3b9d384bddde.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/walkies.mp3-6438e6012786b8e14a06e35fad66d1ad.mp3str"
+
+[deps]
+
+source_file="res://Sound/walkies.mp3"
+dest_files=[ "res://.import/walkies.mp3-6438e6012786b8e14a06e35fad66d1ad.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
