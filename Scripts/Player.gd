@@ -140,5 +140,5 @@ func _on_slap_plat(body):
 	
 func _on_hit():
 	print(_velocity)
-	_velocity *= 0.5
+	_velocity *= 0.6
 	print(_velocity)
