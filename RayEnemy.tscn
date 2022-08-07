@@ -63,7 +63,7 @@ tracks/0/keys = {
 }
 
 [node name="RayEnemy" type="Area2D"]
-collision_layer = 8
+collision_layer = 4
 script = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

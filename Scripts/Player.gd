@@ -20,16 +20,6 @@ onready var sprite = $Sprite
 func _ready():
 	# Static types are necessary here to avoid warnings.
 	var camera: Camera2D = $Camera
-	if action_suffix == "_p1":
-		camera.custom_viewport = $"../.."
-		yield(get_tree(), "idle_frame")
-		camera.make_current()
-	elif action_suffix == "_p2":
-		var viewport: Viewport = $"../../../../ViewportContainer2/Viewport2"
-		viewport.world_2d = ($"../.." as Viewport).world_2d
-		camera.custom_viewport = viewport
-		yield(get_tree(), "idle_frame")
-		camera.make_current()
 
 
 # Physics process is a built-in loop in Godot.
@@ -73,13 +63,11 @@ func _physics_process(_delta):
 		)
 	elif _velocity.x < 0:
 		if left_platform_detector.is_colliding():
-			print(_velocity.x)
 			_velocity.x = max(150, abs(_velocity.x))
 			sprite.flip_v = true
 		_velocity = move_and_slide_with_snap(
 			_velocity, snap_vector, FLOOR_NORMAL_RIGHT, not left_platform_detector.is_colliding(), 4, 0.9, false
 		)
-		print(_velocity.x)
 	else:
 		if right_platform_detector.is_colliding():
 			_velocity.x = min(-150, -abs(_velocity.x))
@@ -87,6 +75,9 @@ func _physics_process(_delta):
 		if left_platform_detector.is_colliding():
 			_velocity.x = max(150, abs(_velocity.x))
 			sprite.flip_v = true
+		_velocity = move_and_slide_with_snap(
+			_velocity, snap_vector, FLOOR_NORMAL_RIGHT, not is_on_platform, 4, 0.9, false
+		)
 		
 
 	# We use the sprite's scale to store Robi’s look direction which allows us to shoot
@@ -129,3 +120,7 @@ func get_new_animation(is_shooting = false):
 	if is_shooting:
 		animation_new = "Slap"
 	return animation_new
+
+
+func _on_slap(area):
+	area.queue_free()
