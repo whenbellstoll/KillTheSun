@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Art/Player1.png" type="Texture" id=1]
 [ext_resource path="res://Art/Player2.png" type="Texture" id=2]
 [ext_resource path="res://Art/Boi.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=4]
 [ext_resource path="res://Sound/Slap.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Sound/car-impact-large.mp3" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 37, 20 )
@@ -180,6 +181,37 @@ tracks/4/keys = {
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 36.5, 32 )
 
+[sub_resource type="Animation" id=6]
+resource_name = "Crash"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../CrashSound/AudioStreamPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../CrashSound/AudioStreamPlayer:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 2
 script = ExtResource( 4 )
@@ -234,6 +266,14 @@ collide_with_areas = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+
+[node name="CrashSound" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationPlayer")
+anims/Crash = SubResource( 6 )
+anims/RESET = SubResource( 7 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CrashSound"]
+stream = ExtResource( 6 )
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_slap"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_slap_plat"]

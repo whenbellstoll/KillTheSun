@@ -15,6 +15,7 @@ onready var animation_player = $AnimationPlayer
 onready var slap_timer = $SlapAnimation
 onready var sprite = $Sprite
 onready var audioPlayer = $AudioStreamPlayer
+onready var crashPlayer = $CrashSound
 onready var timer = get_node("../PlayerTracker/Time");
 
 onready var slap1 = preload("res://Sound/Slap.mp3")
@@ -149,6 +150,5 @@ func _on_slap_plat(body):
 	body.get_owner().queue_free()
 	
 func _on_hit():
-	print(_velocity)
+	crashPlayer.play("Crash")
 	_velocity *= 0.6
-	print(_velocity)
