@@ -31,6 +31,10 @@ config/description="He he kill the sun with a strong guy!"
 run/main_scene="res://Opening.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GlobalTimer="*res://Scripts/GlobalTimer.gd"
+
 [display]
 
 window/stretch/mode="viewport"
