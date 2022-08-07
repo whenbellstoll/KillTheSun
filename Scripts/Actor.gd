@@ -21,7 +21,7 @@ var distance = 0;
 # This allows the Player and Enemy scenes to be affected by gravity.
 func _physics_process(delta):
 	distance += (-_velocity.y * delta);
-	print(distance);
+	# print(distance);
 	_velocity.y -= 0.333;
 	if _velocity.y < MAX_VERTICAL_VELOCITY:
 		_velocity.y = MAX_VERTICAL_VELOCITY;
