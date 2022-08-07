@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Art/Player1.png" type="Texture" id=1]
 [ext_resource path="res://Art/Player2.png" type="Texture" id=2]
 [ext_resource path="res://Art/Boi.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=4]
+[ext_resource path="res://Sound/Slap.mp3" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 37, 20 )
@@ -45,6 +46,30 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AudioStreamPlayer:stream")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 5 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -139,6 +164,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("AudioStreamPlayer:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 36.5, 32 )
@@ -161,6 +198,7 @@ position = Vector2( -1.6, 214 )
 rotation = 4.71239
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 3 )
+offset = Vector2( 256, 0 )
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
@@ -179,7 +217,6 @@ collision_mask = 6
 [node name="SlapCollision" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -0.0999985, 173 )
 shape = SubResource( 5 )
-disabled = true
 
 [node name="RightPlatformDetector" type="RayCast2D" parent="."]
 position = Vector2( 35, 220 )
@@ -194,6 +231,9 @@ enabled = true
 cast_to = Vector2( -8, 0 )
 collision_mask = 2
 collide_with_areas = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_slap"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_slap_plat"]

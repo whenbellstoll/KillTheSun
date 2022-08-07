@@ -14,7 +14,13 @@ onready var left_platform_detector = $LeftPlatformDetector
 onready var animation_player = $AnimationPlayer
 onready var slap_timer = $SlapAnimation
 onready var sprite = $Sprite
+onready var audioPlayer = $AudioStreamPlayer
 onready var timer = get_node("../PlayerTracker/Time");
+
+onready var slap1 = preload("res://Sound/Slap.mp3")
+onready var slap2 = preload("res://Sound/Slap2.mp3")
+
+onready var rng = RandomNumberGenerator.new()
 # onready var sound_jump = $Jump
 
 var mississippi = 0
@@ -22,6 +28,7 @@ var mississippi = 0
 func _ready():
 	# Static types are necessary here to avoid warnings.
 	var camera: Camera2D = $Camera
+	rng.randomize()
 
 
 # Physics process is a built-in loop in Godot.
@@ -101,6 +108,9 @@ func _physics_process(_delta):
 	if animation != animation_player.current_animation and slap_timer.is_stopped():
 		if is_shooting:
 			slap_timer.start()
+			var num = rng.randi_range(0, 1)
+			if num == 0: audioPlayer.stream = slap1
+			else: audioPlayer.stream = slap2
 		animation_player.play(animation)
 
 
