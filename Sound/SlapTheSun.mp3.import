@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/SlapTheSun.mp3-70f6933d3c601ce1069ae2b70e6c22ff.mp3str"
+
+[deps]
+
+source_file="res://Sound/SlapTheSun.mp3"
+dest_files=[ "res://.import/SlapTheSun.mp3-70f6933d3c601ce1069ae2b70e6c22ff.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
