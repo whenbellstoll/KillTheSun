@@ -26,6 +26,13 @@ func _ready():
 func _process(delta):
 	self.global_position.y += 0.66;
 	pass
+
+
+func _on_RayEnemy_body_entered(body):
+	var player : Player = body as Player
+	if player:
+		player._on_hit()
+		self.queue_free()
 "
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -80,3 +87,5 @@ anims/Ray = SubResource( 3 )
 position = Vector2( 5, 2 )
 scale = Vector2( 0.25, 0.5 )
 texture = ExtResource( 3 )
+
+[connection signal="body_entered" from="." to="." method="_on_RayEnemy_body_entered"]

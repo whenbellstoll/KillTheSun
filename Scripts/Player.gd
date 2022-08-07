@@ -137,3 +137,8 @@ func _on_slap(area):
 
 func _on_slap_plat(body):
 	body.get_owner().queue_free()
+	
+func _on_hit():
+	print(_velocity)
+	_velocity *= 0.5
+	print(_velocity)
