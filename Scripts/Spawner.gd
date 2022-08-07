@@ -55,8 +55,8 @@ func spawnPlatforms():
 	var startPos = self.global_position;
 	startPos.y -= 300;
 	print("spawnPlat: " + str(startPos.x) + " " + str(startPos.y) );
-	for n in 8:
-		var yOffset = rng.randf_range(-1500, 0);
+	for n in 10:
+		var yOffset = rng.randf_range(-3000, 0);
 		var xOffset = rng.randf_range(-300, 300);
 		var pI = platform.instance();
 		pI.position = Vector2( startPos.x + xOffset, max(startPos.y + yOffset, -abs(player.END_DISTANCE - 2000)));
@@ -67,8 +67,8 @@ func spawnEnemies():
 	spawnedEnem = true;
 	var startPos = self.global_position;
 	startPos.y -= 300;
-	for n in 8:
-		var yOffset = rng.randf_range(-1500, 0);
+	for n in 5:
+		var yOffset = rng.randf_range(-3000, 0);
 		var xOffset = rng.randf_range(-300, 300);
 		var pI = enemy.instance();
 		pI.position = Vector2( startPos.x + xOffset, max(startPos.y + yOffset, -abs(player.END_DISTANCE - 2000)));
