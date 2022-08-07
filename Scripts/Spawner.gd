@@ -4,7 +4,7 @@ extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var platform = preload("res://PlatformCollider.tscn");
+var platform = preload("res://Platform.tscn");
 var enemy = preload("res://RayEnemy.tscn");
 onready var player = get_node("../../Player");
 
