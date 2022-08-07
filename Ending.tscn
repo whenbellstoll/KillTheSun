@@ -365,6 +365,18 @@ tracks/14/keys = {
 "update": 1,
 "values": [ false, false, true ]
 }
+tracks/15/type = "value"
+tracks/15/path = NodePath("Time:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 14.6, 14.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
 
 [sub_resource type="Animation" id=7]
 length = 0.001
@@ -495,6 +507,18 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Time:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -631,6 +655,7 @@ scale = Vector2( 172, 600 )
 texture = ExtResource( 3 )
 
 [node name="Time" type="Label" parent="."]
+visible = false
 margin_left = -138.0
 margin_top = 157.0
 margin_right = 130.0
