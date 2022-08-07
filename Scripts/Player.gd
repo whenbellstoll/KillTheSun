@@ -16,6 +16,7 @@ onready var slap_timer = $SlapAnimation
 onready var sprite = $Sprite
 # onready var sound_jump = $Jump
 
+var mississippi = 0
 
 func _ready():
 	# Static types are necessary here to avoid warnings.
@@ -47,6 +48,9 @@ func _physics_process(_delta):
 
 	if distance >= END_DISTANCE:
 		_velocity = Vector2.ZERO
+		mississippi += _delta
+		if(mississippi > 3):
+			get_tree().change_scene("res://Ending.tscn")
 		return
 
 	var direction = get_move_direction()
