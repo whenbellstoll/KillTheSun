@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Art/WhitePixel.png" type="Texture" id=1]
 [ext_resource path="res://Art/Sunglasses.png" type="Texture" id=2]
@@ -13,10 +13,12 @@
 [ext_resource path="res://Art/SandFloor.png" type="Texture" id=11]
 [ext_resource path="res://Art/Player2.png" type="Texture" id=12]
 [ext_resource path="res://Opening.gd" type="Script" id=13]
+[ext_resource path="res://Sound/SunStaringHHHHMMMM.mp3" type="AudioStream" id=14]
+[ext_resource path="res://Sound/ReadySetGoGrunt.mp3" type="AudioStream" id=15]
 
 [sub_resource type="Animation" id=2]
 resource_name = "Intro"
-length = 9.0
+length = 11.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("SunRay:modulate")
 tracks/0/interp = 1
@@ -72,7 +74,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 2.3, 2.4, 3.5, 4.7 ),
+"times": PoolRealArray( 0, 2.3, 2.4, 3.5, 5.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ false, false, true, false, true ]
@@ -84,7 +86,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 2.3, 2.4, 3.5, 4.7 ),
+"times": PoolRealArray( 0, 2.3, 2.4, 3.5, 5.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ false, false, true, false, true ]
@@ -96,7 +98,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 3.5, 4.7 ),
+"times": PoolRealArray( 0, 3.5, 5.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 8 ), ExtResource( 10 ), ExtResource( 11 ) ]
@@ -108,7 +110,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 3.4, 3.5, 4.7 ),
+"times": PoolRealArray( 0, 3.4, 3.5, 5.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ false, false, true, false ]
@@ -120,7 +122,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 3.5, 4.4 ),
+"times": PoolRealArray( 3.5, 5.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( -2.20537e-05, -7.62939e-06 ), Vector2( -52, 54 ) ]
@@ -132,7 +134,7 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 4.6, 4.7 ),
+"times": PoolRealArray( 0, 5.4, 5.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, true, false ]
@@ -144,7 +146,7 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 2.4, 4.6, 4.7 ),
+"times": PoolRealArray( 2.4, 5.4, 5.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, true, false ]
@@ -156,7 +158,7 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 2.4, 4.6, 4.7 ),
+"times": PoolRealArray( 2.4, 5.4, 5.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( -140, -178 ), Vector2( -140, -178 ), Vector2( 283, 65 ) ]
@@ -168,7 +170,7 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 4.6, 4.7, 5.4, 6.8, 8.5 ),
+"times": PoolRealArray( 0, 5.4, 5.5, 6.5, 8.3, 9.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 106, 34 ), Vector2( 106, 34 ), Vector2( 0, 34 ), Vector2( 0, 34 ), Vector2( 0, 34 ), Vector2( 0, -500 ) ]
@@ -180,7 +182,7 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 4.6, 4.7, 5.4, 6.2 ),
+"times": PoolRealArray( 0, 5.4, 5.5, 6.5, 7.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 45.3, 45.3, 0.0, 0.0, -90.0 ]
@@ -192,7 +194,7 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0, 4.6, 4.7 ),
+"times": PoolRealArray( 0, 5.4, 5.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, true, false ]
@@ -204,7 +206,7 @@ tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 2.4, 4.6, 4.7 ),
+"times": PoolRealArray( 2.4, 5.4, 5.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, true, false ]
@@ -216,7 +218,7 @@ tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( -0.7, 2.4, 4.6, 4.7, 5.1, 5.4 ),
+"times": PoolRealArray( -0.7, 2.4, 5.4, 5.5, 5.9, 6.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 105, 34 ), Vector2( 105, 34 ), Vector2( 105, 34 ), Vector2( 0, 41 ), Vector2( 223.018, 158.626 ), Vector2( 279.558, 386.356 ) ]
@@ -228,7 +230,7 @@ tracks/17/loop_wrap = true
 tracks/17/imported = false
 tracks/17/enabled = true
 tracks/17/keys = {
-"times": PoolRealArray( 0, 2.3, 2.4, 3.4, 3.5, 4.7 ),
+"times": PoolRealArray( 0, 2.3, 2.4, 3.4, 3.5, 5.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ false, false, true, true, false, true ]
@@ -240,7 +242,7 @@ tracks/18/loop_wrap = true
 tracks/18/imported = false
 tracks/18/enabled = true
 tracks/18/keys = {
-"times": PoolRealArray( 2.4, 4.6, 4.7 ),
+"times": PoolRealArray( 2.4, 5.4, 5.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 45.3, 45.3, 0.0 ]
@@ -252,10 +254,34 @@ tracks/19/loop_wrap = true
 tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = {
-"times": PoolRealArray( 0.1, 6.4, 6.6 ),
+"times": PoolRealArray( 0.1, 7.9, 8.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ "Idle", "Idle", "Run" ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("AudioStreamPlayer:stream")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 3.4, 5.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 14 ), ExtResource( 15 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("AudioStreamPlayer:playing")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 3.4, 3.5, 5.3, 5.5, 10.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, false, true, false ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -476,6 +502,18 @@ tracks/17/keys = {
 "update": 0,
 "values": [ 45.3 ]
 }
+tracks/18/type = "value"
+tracks/18/path = NodePath("AudioStreamPlayer:playing")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="AnimatedTexture" id=1]
 
@@ -556,7 +594,6 @@ scale = Vector2( 0.589844, 0.589844 )
 texture = ExtResource( 6 )
 
 [node name="BGSprite" type="Sprite" parent="."]
-visible = false
 position = Vector2( -2.20537e-05, -7.62939e-06 )
 scale = Vector2( 0.664063, 0.585938 )
 texture = ExtResource( 8 )
@@ -609,3 +646,6 @@ texture = ExtResource( 1 )
 anims/Idle = SubResource( 4 )
 anims/RESET = SubResource( 5 )
 anims/Run = SubResource( 6 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
