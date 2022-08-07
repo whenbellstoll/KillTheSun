@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Art/Player1.png" type="Texture" id=1]
 [ext_resource path="res://Art/Player2.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=4]
 [ext_resource path="res://Sound/Slap.mp3" type="AudioStream" id=5]
 [ext_resource path="res://Sound/car-impact-large.mp3" type="AudioStream" id=6]
+[ext_resource path="res://Sound/walkies.mp3" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 37, 20 )
@@ -72,6 +73,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [ ExtResource( 5 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Walkin:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Run"
@@ -108,6 +121,18 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Walkin:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -230,7 +255,6 @@ position = Vector2( -1.6, 214 )
 rotation = 4.71239
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 3 )
-offset = Vector2( 256, 0 )
 
 [node name="Camera" type="Camera2D" parent="."]
 current = true
@@ -249,6 +273,7 @@ collision_mask = 6
 [node name="SlapCollision" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -0.0999985, 173 )
 shape = SubResource( 5 )
+disabled = true
 
 [node name="RightPlatformDetector" type="RayCast2D" parent="."]
 position = Vector2( 35, 220 )
@@ -274,6 +299,10 @@ anims/RESET = SubResource( 7 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CrashSound"]
 stream = ExtResource( 6 )
+
+[node name="Walkin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = 20.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_slap"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_slap_plat"]
