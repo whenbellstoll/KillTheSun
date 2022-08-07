@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/WhitePixel.png" type="Texture" id=2]
@@ -30,6 +30,16 @@ onready var _player = get_node(\"../../../Player\")
 
 func _process(delta):
 	self.modulate = lerp(Color(\"72fffe\"), Color.black, min(_player.distance / 30000, 1))
+	pass
+"
+
+[sub_resource type="GDScript" id=7]
+script/source = "extends Sprite
+
+onready var _player = get_node(\"../../../../Player\")
+
+func _process(delta):
+	self.modulate = lerp(Color.transparent, Color.white, min(float(_player.distance > 25000), min(_player.distance / 40000, 1)) )
 	pass
 "
 
@@ -107,6 +117,7 @@ motion_mirroring = Vector2( 0, 1000 )
 
 [node name="Sprite" type="Sprite" parent="PlayerTracker/ParallaxBackground/ParallaxLayer"]
 texture = ExtResource( 9 )
+script = SubResource( 7 )
 
 [node name="Despawner" type="Area2D" parent="PlayerTracker"]
 position = Vector2( 4, 476 )
