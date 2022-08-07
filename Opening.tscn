@@ -593,15 +593,15 @@ anims/Intro = SubResource( 2 )
 anims/RESET = SubResource( 3 )
 
 [node name="LeftMargin" type="Sprite" parent="."]
-modulate = Color( 0, 0, 0, 1 )
-position = Vector2( -426, 0 )
+modulate = Color( 0.372549, 0.372549, 0.372549, 1 )
+position = Vector2( -424, 0 )
 scale = Vector2( 172, 600 )
 texture = ExtResource( 1 )
 normal_map = SubResource( 1 )
 
 [node name="RightMargin" type="Sprite" parent="."]
-modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 426, 0 )
+modulate = Color( 0.372549, 0.372549, 0.372549, 1 )
+position = Vector2( 427, -1 )
 scale = Vector2( 172, 600 )
 texture = ExtResource( 1 )
 

@@ -59,7 +59,7 @@ func spawnPlatforms():
 		var yOffset = rng.randf_range(-1500, 0);
 		var xOffset = rng.randf_range(-300, 300);
 		var pI = platform.instance();
-		pI.position = Vector2( startPos.x + xOffset, startPos.y + yOffset);
+		pI.position = Vector2( startPos.x + xOffset, max(startPos.y + yOffset, -abs(player.END_DISTANCE - 2000)));
 		get_tree().get_root().get_node("Node2D").add_child(pI);
 	pass
 
@@ -71,6 +71,6 @@ func spawnEnemies():
 		var yOffset = rng.randf_range(-1500, 0);
 		var xOffset = rng.randf_range(-300, 300);
 		var pI = enemy.instance();
-		pI.position = Vector2( startPos.x + xOffset, startPos.y + yOffset);
+		pI.position = Vector2( startPos.x + xOffset, max(startPos.y + yOffset, -abs(player.END_DISTANCE - 2000)));
 		get_tree().get_root().get_node("Node2D").add_child(pI);
 	pass

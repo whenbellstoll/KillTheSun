@@ -45,6 +45,10 @@ func _physics_process(_delta):
 	# if Input.is_action_just_pressed("jump" + action_suffix) and is_on_floor():
 		# sound_jump.play()
 
+	if distance >= END_DISTANCE:
+		_velocity = Vector2.ZERO
+		return
+
 	var direction = get_move_direction()
 
 	# var is_jump_interrupted = Input.is_action_just_released("jump" + action_suffix) and _velocity.y < 0.0
