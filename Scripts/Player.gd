@@ -127,3 +127,7 @@ func get_new_animation(is_shooting = false):
 	if is_shooting:
 		animation_new = "Slap"
 	return animation_new
+
+
+func _on_slap(area):
+	area.queue_free()
