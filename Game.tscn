@@ -57,4 +57,4 @@ texture = ExtResource( 2 )
 visible = false
 scale = Vector2( 0.0497176, 0.0499259 )
 
-[node name="Node2D" parent="PlayerTracker" instance=ExtResource( 4 )]
+[node name="Spawner" parent="PlayerTracker" instance=ExtResource( 4 )]

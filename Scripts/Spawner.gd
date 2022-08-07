@@ -6,7 +6,7 @@ extends Node
 # var b = "text"
 var platform = preload("res://PlatformCollider.tscn");
 var enemy = preload("res://RayEnemy.tscn");
-
+onready var player = get_node("../../Player");
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,7 +14,7 @@ func _ready():
 	pass # Replace with function body.
 
 var time = 0;
-var base = 2;
+var base = 1;
 var spawnPlatRange = 0;
 var spawnEnemRange = 0;
 var spawnNumber = 0;
@@ -29,10 +29,10 @@ func _process(delta):
 		spawnNumber = 48;
 	
 	if spawnPlatRange == 0:
-		spawnPlatRange = rng.randf_range(0, 5.0 - (spawnNumber / 10.0) );
+		spawnPlatRange = rng.randf_range(0, 5.0 - ((player._velocity.y / player.MAX_VERTICAL_VELOCITY) * 5.0) );
 	
 	if spawnEnemRange == 0:
-		spawnEnemRange = rng.randf_range(0, 7.0 - (spawnNumber / 10.0) );
+		spawnEnemRange = rng.randf_range(0, 7.0 - ((player._velocity.y / player.MAX_VERTICAL_VELOCITY) * 6.0) );
 	
 	if time > base + spawnPlatRange && !spawnedPlat:
 		spawnPlatRange = 0;
@@ -52,7 +52,7 @@ func _process(delta):
 
 func spawnPlatforms():
 	spawnedPlat = true;
-	var startPos = self.position;
+	var startPos = self.global_position;
 	startPos.y -= 300;
 	print("spawnPlat: " + str(startPos.x) + " " + str(startPos.y) );
 	for n in 8:
@@ -65,12 +65,12 @@ func spawnPlatforms():
 
 func spawnEnemies():
 	spawnedEnem = true;
-	var startPos = self.position;
-	startPos.y += 300;
+	var startPos = self.global_position;
+	startPos.y -= 300;
 	for n in 8:
-		var yOffset = rng.randf_range(0, 1500);
+		var yOffset = rng.randf_range(-1500, 0);
 		var xOffset = rng.randf_range(-300, 300);
 		var pI = enemy.instance();
 		pI.position = Vector2( startPos.x + xOffset, startPos.y + yOffset);
-		add_child(pI);
+		get_tree().get_root().get_node("Node2D").add_child(pI);
 	pass
