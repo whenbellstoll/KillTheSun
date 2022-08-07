@@ -193,6 +193,7 @@ normal_map = SubResource( 3 )
 [node name="StaticBody2D" parent="PlayerTracker/LeftMargin" instance=ExtResource( 3 )]
 visible = false
 scale = Vector2( 0.0497176, 0.049926 )
+collision_layer = 16
 
 [node name="Sun" type="Sprite" parent="PlayerTracker"]
 position = Vector2( -431, -229 )
@@ -226,6 +227,7 @@ texture = ExtResource( 2 )
 [node name="StaticBody2D" parent="PlayerTracker/RightMargin" instance=ExtResource( 3 )]
 visible = false
 scale = Vector2( 0.0497176, 0.0499259 )
+collision_layer = 16
 
 [node name="Spawner" parent="PlayerTracker" instance=ExtResource( 4 )]
 
