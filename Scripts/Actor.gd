@@ -16,6 +16,7 @@ const MAX_VERTICAL_VELOCITY = -1800;
 var _velocity = Vector2.ZERO
 
 var distance = 0;
+const END_DISTANCE = 100000
 
 # _physics_process is called after the inherited _physics_process function.
 # This allows the Player and Enemy scenes to be affected by gravity.

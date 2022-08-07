@@ -124,3 +124,7 @@ func get_new_animation(is_shooting = false):
 
 func _on_slap(area):
 	area.queue_free()
+
+
+func _on_slap_plat(body):
+	body.get_owner().queue_free()
