@@ -23,7 +23,7 @@ const END_DISTANCE = 100000
 func _physics_process(delta):
 	distance += (-_velocity.y * delta);
 	# print(distance);
-	_velocity.y -= 5.666;
+	_velocity.y -= 0.333;
 	if _velocity.y < MAX_VERTICAL_VELOCITY:
 		_velocity.y = MAX_VERTICAL_VELOCITY;
 
