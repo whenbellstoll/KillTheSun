@@ -14,6 +14,7 @@ onready var left_platform_detector = $LeftPlatformDetector
 onready var animation_player = $AnimationPlayer
 onready var slap_timer = $SlapAnimation
 onready var sprite = $Sprite
+onready var timer = get_node("../PlayerTracker/Time");
 # onready var sound_jump = $Jump
 
 var mississippi = 0
@@ -50,7 +51,7 @@ func _physics_process(_delta):
 		_velocity = Vector2.ZERO
 		mississippi += _delta
 		if(mississippi > 3):
-			get_tree().change_scene("res://Ending.tscn")
+			var new_scene = get_tree().change_scene("res://Ending.tscn")
 		return
 
 	var direction = get_move_direction()

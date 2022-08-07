@@ -110,16 +110,15 @@ tracks/0/keys = {
 script/source = "extends Label
 
 onready var player = get_node(\"../../Player\");
-var time = 0
 
 func _process(delta):
 	if player.distance < player.END_DISTANCE: 
-		time += delta
+		GlobalTimer.time += delta
 	
-	var mils = fmod(time,1)*1000
-	var secs = fmod(time,60)
-	var mins = fmod(time, 60*60) / 60
-	var hr = fmod(fmod(time,3600 * 60) / 3600,24)
+	var mils = fmod(GlobalTimer.time,1)*1000
+	var secs = fmod(GlobalTimer.time,60)
+	var mins = fmod(GlobalTimer.time, 60*60) / 60
+	var hr = fmod(fmod(GlobalTimer.time,3600 * 60) / 3600,24)
 	
 	var time_passed = \"%02d : %02d : %02d : %03d\" % [hr,mins,secs,mils]
 	text = time_passed# + \" : \" + var2str(time)
