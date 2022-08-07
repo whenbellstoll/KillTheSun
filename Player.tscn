@@ -160,4 +160,4 @@ collision_mask = 2
 collide_with_areas = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_slap"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_slap"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_slap_plat"]
