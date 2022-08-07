@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/WhitePixel.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Art/Umbrella.png" type="Texture" id=7]
 [ext_resource path="res://Art/SandFloor.png" type="Texture" id=8]
 [ext_resource path="res://Art/ParallaxBackground.png" type="Texture" id=9]
+[ext_resource path="res://Art/Player1.png" type="Texture" id=10]
+[ext_resource path="res://Art/Player2.png" type="Texture" id=11]
 
 [sub_resource type="GDScript" id=2]
 resource_name = "PlayerTracker"
@@ -22,6 +24,87 @@ func _process(delta):
 "
 
 [sub_resource type="AnimatedTexture" id=3]
+
+[sub_resource type="GDScript" id=9]
+resource_name = "ProgressBar"
+script/source = "extends Sprite
+
+const start : Vector2 = Vector2(-428,245)
+const end : Vector2 = Vector2(-428,-195)
+
+onready var player = get_node(\"../../Player\")
+
+func _ready():
+	$ManHUD.play(\"ManRun\")
+	$SunHUD.play(\"SunRotate\")
+	print(\"akdgbakjbg\");
+
+func _process(delta):
+	self.position = lerp(start, end, player.distance / player.END_DISTANCE)
+"
+
+[sub_resource type="Animation" id=10]
+resource_name = "ManRun"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ), ExtResource( 11 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 10 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Sun/Rays:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "SunRotate"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Sun/Rays:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
 
 [sub_resource type="GDScript" id=8]
 script/source = "extends Label
@@ -100,7 +183,7 @@ extents = Vector2( 391.5, 52 )
 script = SubResource( 2 )
 
 [node name="LeftMargin" type="Sprite" parent="PlayerTracker"]
-modulate = Color( 0.372549, 0.372549, 0.372549, 1 )
+self_modulate = Color( 0.372549, 0.372549, 0.372549, 1 )
 position = Vector2( -426, 0 )
 scale = Vector2( 171.537, 604.775 )
 texture = ExtResource( 2 )
@@ -109,6 +192,29 @@ normal_map = SubResource( 3 )
 [node name="StaticBody2D" parent="PlayerTracker/LeftMargin" instance=ExtResource( 3 )]
 visible = false
 scale = Vector2( 0.0497176, 0.049926 )
+
+[node name="Sun" type="Sprite" parent="PlayerTracker"]
+position = Vector2( -431, -229 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 6 )
+
+[node name="Rays" type="Sprite" parent="PlayerTracker/Sun"]
+texture = ExtResource( 5 )
+
+[node name="Man" type="Sprite" parent="PlayerTracker"]
+position = Vector2( -428, 245 )
+rotation = -1.5708
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 10 )
+script = SubResource( 9 )
+
+[node name="ManHUD" type="AnimationPlayer" parent="PlayerTracker/Man"]
+anims/ManRun = SubResource( 10 )
+anims/RESET = SubResource( 11 )
+
+[node name="SunHUD" type="AnimationPlayer" parent="PlayerTracker/Man"]
+anims/RESET = SubResource( 12 )
+anims/SunRotate = SubResource( 13 )
 
 [node name="RightMargin" type="Sprite" parent="PlayerTracker"]
 modulate = Color( 0.372549, 0.372549, 0.372549, 1 )
