@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/SunStaringHHHHMMMM.mp3-71e3d1a77878198a6704f6941dea9308.mp3str"
+
+[deps]
+
+source_file="res://Sound/SunStaringHHHHMMMM.mp3"
+dest_files=[ "res://.import/SunStaringHHHHMMMM.mp3-71e3d1a77878198a6704f6941dea9308.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
