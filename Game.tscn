@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/WhitePixel.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Art/Sun.png" type="Texture" id=6]
 [ext_resource path="res://Art/Umbrella.png" type="Texture" id=7]
 [ext_resource path="res://Art/SandFloor.png" type="Texture" id=8]
+[ext_resource path="res://Art/ParallaxBackground.png" type="Texture" id=9]
 
 [sub_resource type="GDScript" id=2]
 resource_name = "PlayerTracker"
@@ -25,7 +26,7 @@ func _process(delta):
 [sub_resource type="GDScript" id=4]
 script/source = "extends Sprite
 
-onready var _player = get_node(\"../../Player\")
+onready var _player = get_node(\"../../../Player\")
 
 func _process(delta):
 	self.modulate = lerp(Color(\"72fffe\"), Color.black, min(_player.distance / 30000, 1))
@@ -91,11 +92,21 @@ scale = Vector2( 0.0497176, 0.0499259 )
 
 [node name="Spawner" parent="PlayerTracker" instance=ExtResource( 4 )]
 
-[node name="Background" type="Sprite" parent="PlayerTracker"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="PlayerTracker"]
+layer = -1
+
+[node name="Background" type="Sprite" parent="PlayerTracker/ParallaxBackground"]
 modulate = Color( 0.447059, 1, 0.996078, 1 )
-scale = Vector2( 680, 604 )
+position = Vector2( 519, 302 )
+scale = Vector2( 765, 604 )
 texture = ExtResource( 2 )
 script = SubResource( 4 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="PlayerTracker/ParallaxBackground"]
+motion_mirroring = Vector2( 0, 1000 )
+
+[node name="Sprite" type="Sprite" parent="PlayerTracker/ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 9 )
 
 [node name="Despawner" type="Area2D" parent="PlayerTracker"]
 position = Vector2( 4, 476 )
