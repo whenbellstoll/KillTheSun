@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art/WhitePixel.png" type="Texture" id=2]
@@ -23,6 +23,27 @@ func _process(delta):
 
 [sub_resource type="AnimatedTexture" id=3]
 
+[sub_resource type="GDScript" id=8]
+script/source = "extends Label
+
+onready var player = get_node(\"../../Player\");
+var time = 0
+
+func _process(delta):
+	if player.distance < player.END_DISTANCE: 
+		time += delta
+	
+	var mils = fmod(time,1)*1000
+	var secs = fmod(time,60)
+	var mins = fmod(time, 60*60) / 60
+	var hr = fmod(fmod(time,3600 * 60) / 3600,24)
+	
+	var time_passed = \"%02d : %02d : %02d : %03d\" % [hr,mins,secs,mils]
+	text = time_passed# + \" : \" + var2str(time)
+	
+	pass
+"
+
 [sub_resource type="GDScript" id=4]
 script/source = "extends Sprite
 
@@ -39,7 +60,7 @@ script/source = "extends Sprite
 onready var _player = get_node(\"../../../../Player\")
 
 func _process(delta):
-	self.modulate = lerp(Color.transparent, Color.white, min(float(_player.distance > 25000), min(_player.distance / 40000, 1)) )
+	self.modulate = lerp(Color.transparent, Color.white, min(float(_player.distance > 10000), min(_player.distance / 45000, 1)) )
 	pass
 "
 
@@ -101,6 +122,14 @@ visible = false
 scale = Vector2( 0.0497176, 0.0499259 )
 
 [node name="Spawner" parent="PlayerTracker" instance=ExtResource( 4 )]
+
+[node name="Time" type="Label" parent="PlayerTracker"]
+margin_left = 351.0
+margin_top = 224.0
+margin_right = 496.0
+margin_bottom = 277.0
+text = "\"00:00:00\""
+script = SubResource( 8 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="PlayerTracker"]
 layer = -1
