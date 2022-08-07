@@ -23,8 +23,9 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	self.global_position.y += 0.66;
+	pass
 "
 
 [sub_resource type="RectangleShape2D" id=1]
