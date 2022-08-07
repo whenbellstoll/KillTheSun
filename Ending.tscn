@@ -298,10 +298,10 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 12.5, 12.7 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 12.5, 12.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ false, false, true ]
 }
 tracks/10/type = "value"
 tracks/10/path = NodePath("SunSad/Tears:visible")
@@ -346,6 +346,18 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
+"times": PoolRealArray( 0, 14.6, 14.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Label:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
 "times": PoolRealArray( 0, 14.6, 14.7 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
@@ -474,6 +486,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [ true ]
 }
+tracks/10/type = "value"
+tracks/10/path = NodePath("Label:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="AnimatedTexture" id=1]
 
@@ -496,7 +520,6 @@ texture = ExtResource( 7 )
 offset = Vector2( 700, -20 )
 
 [node name="SunBig" type="Sprite" parent="."]
-visible = false
 position = Vector2( 788, 0 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
@@ -528,6 +551,7 @@ texture = ExtResource( 1 )
 offset = Vector2( 256, 0 )
 
 [node name="SunSad" type="Sprite" parent="."]
+visible = false
 position = Vector2( -5.00003, 0 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 9 )
@@ -548,6 +572,22 @@ offset = Vector2( 900, -25 )
 self_modulate = Color( 0, 0, 0, 1 )
 scale = Vector2( 680, 600 )
 texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = -305.0
+margin_top = -141.0
+margin_right = -31.0
+margin_bottom = -25.0
+rect_scale = Vector2( 2.23407, 2.23407 )
+text = "Climate scientists hate this one cool trick!!
+
+a game made in 2 days by
+ 
+Holly @TeridaxDev
+Kent @WhenBellsToll
+Basch @Baschfire (Music)"
+align = 1
 
 [node name="LeftMargin" type="Sprite" parent="."]
 modulate = Color( 0.372549, 0.372549, 0.372549, 1 )
