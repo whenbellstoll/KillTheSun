@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Running_at_the_Sun.mp3-14a0a14eb1e0f5b35d173722a08d8b52.mp3str"
+
+[deps]
+
+source_file="res://Sound/Running_at_the_Sun.mp3"
+dest_files=[ "res://.import/Running_at_the_Sun.mp3-14a0a14eb1e0f5b35d173722a08d8b52.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
