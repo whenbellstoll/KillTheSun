@@ -386,7 +386,7 @@ tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( 0, 3.4, 3.5, 9.2, 9.6, 10.6 ),
+"times": PoolRealArray( 0, 3.4, 3.8, 9.2, 9.6, 10.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false, false, true, false ]
@@ -715,3 +715,4 @@ align = 1
 script = SubResource( 12 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
