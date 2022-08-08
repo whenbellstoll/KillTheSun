@@ -300,7 +300,7 @@ anims/RESET = SubResource( 7 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CrashSound"]
 stream = ExtResource( 6 )
-volume_db = 5.0
+volume_db = -2.0
 
 [node name="Walkin" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
