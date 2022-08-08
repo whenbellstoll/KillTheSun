@@ -54,7 +54,7 @@ func spawnPlatforms():
 	spawnedPlat = true;
 	var startPos = self.global_position;
 	startPos.y -= 300;
-	print("spawnPlat: " + str(startPos.x) + " " + str(startPos.y) );
+	# print("spawnPlat: " + str(startPos.x) + " " + str(startPos.y) );
 	for n in 10:
 		var yOffset = rng.randf_range(-3000, 0);
 		var xOffset = rng.randf_range(-300, 300);

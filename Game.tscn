@@ -38,7 +38,7 @@ onready var player = get_node(\"../../Player\")
 func _ready():
 	$ManHUD.play(\"ManRun\")
 	$SunHUD.play(\"SunRotate\")
-	print(\"akdgbakjbg\");
+	# print(\"akdgbakjbg\");
 
 func _process(delta):
 	self.position = lerp(start, end, player.distance / player.END_DISTANCE)
