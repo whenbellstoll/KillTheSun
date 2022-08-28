@@ -682,13 +682,18 @@ margin_top = -141.0
 margin_right = -31.0
 margin_bottom = -25.0
 rect_scale = Vector2( 2.23407, 2.23407 )
-text = "Climate scientists hate this one cool trick!!
+text = "Scientists hate this one cool trick!!
 
 a game made in 2 days by
  
 Holly @TeridaxDev
 Kent @WhenBellsToll
-Basch @Baschfire (Music)"
+Basch @Baschfire (Music)
+
+
+Good job! Try to beat the challenge time:
+
+00:01:30:00"
 align = 1
 
 [node name="LeftMargin" type="Sprite" parent="."]
